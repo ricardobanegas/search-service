@@ -8,13 +8,13 @@ Simple HTTP search service that returns a list of services based on the given qu
 `npm install`
 
 ### Start server (on port 9000)
-`npm start`
+`npm run server`
 
 ### Now fetch the result (new terminal tab)
-`curl localhost:9000/search?query=<SERVICE_NAME>&lat=<LAT>&lng=<LNG>`
+`curl localhost:9000/search?service=<SERVICE_NAME>&lat=<LAT>&lng=<LNG>`
 
 ### Example
-`curl localhost:9000/search?query=&lat=<lat>&lng=<lng>`
+`curl localhost:9000/search?service=massage&lat=59.313357&lng=18.022400`
 
 ### Run tests
 `npm run tests`
@@ -25,6 +25,7 @@ Simple HTTP search service that returns a list of services based on the given qu
 - Kept the application Vanilla ES6/ES7 using camelCase standard
 - Load results into memory for startup of application, so that application doesn't need to re-read results for every request
 - Used simple [Levenshtein distance](https://github.com/gustf/js-levenshtein) library for scoring of service name match
+- Used simple [Geo distance](https://github.com/walling/geo-distance) library for calculating distance between two GPS coordinates.
 - Separated HTTP engine logic and business logic (search engine) for possibly reusability
 - Few simple libraries for GPS coordinate calculations and result scoring used
 

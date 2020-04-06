@@ -1,30 +1,35 @@
 // Libraries
 const express = require('express')
 const app = express()
-
-// Services
 const searchService = require('./service/search')
+const fs = require('fs');
 
-// Instanciate and results data into memory
-const search = new searchService({
-    mama: 'mama'
- })
+// Instantiate and load data into memory
+const rawdata = fs.readFileSync('./db/data.json')
+const data = JSON.parse(rawdata)
+const search = new searchService(data)
 
 // Configuration (in a larger app - separate to standalone config-file)
 const config = {
     PORT: 9000
 }
 
-// Load results into memory
-// XXX
-
 // Routes
-app.get('/search', (req, res) => {
-    res.json(search.find())
+app.get('/search', async (req, res) => {
+    let result
+    // Error handling of query
+    try {
+        result = await search.find(req.query.service, req.query.lat, req.query.lng)
+        res.json(result)
+    } catch(error) {
+        res.json({
+            error
+        })
+    }
 })
 
 app.get('*', (req, res) => {
-    // Catch-all - in production this should include error states like 404, 500
+    // Catch-all - in production this should include error states like 4xx, 5xx
     res.json({
         "error": 'No such URL'
     })
