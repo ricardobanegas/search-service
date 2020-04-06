@@ -16,8 +16,17 @@ Simple HTTP search service that returns a list of services based on the given qu
 ### Example
 `curl localhost:9000/search?service=massage&lat=59.313357&lng=18.022400`
 
-### Run tests
+### Run mocha tests
 `npm run tests`
+
+## Tested on
+
+```
+➜ npm --version
+6.11.3
+➜ node --version
+v12.12.0
+```
 
 ## Approach
 
@@ -27,7 +36,6 @@ Simple HTTP search service that returns a list of services based on the given qu
 - Used simple [Levenshtein distance](https://github.com/gustf/js-levenshtein) library for scoring of service name match
 - Used simple [Geo distance](https://github.com/walling/geo-distance) library for calculating distance between two GPS coordinates.
 - Separated HTTP engine logic and business logic (search engine) for possibly reusability
-- Few simple libraries for GPS coordinate calculations and result scoring used
 
 ## Further improvements for real-life use
 
