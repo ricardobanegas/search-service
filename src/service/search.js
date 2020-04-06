@@ -73,7 +73,11 @@ class searchService {
                 }
             })
 
-        return results
+        return {
+            totalHits: results.length,
+            totalDocuments: this.data.length,
+            results
+        }
     }
 }
 
