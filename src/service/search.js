@@ -27,20 +27,21 @@ class searchService {
      * @param {*} lng Longtide of the user
      */
     find (service, lat, lng) {
-        // Simple error handling
-        if (service === null || service === '' || typeof service !== 'string') {
+        // Error handling
+        if (service === null || service === '' || service.length < 2) {
             throw 'Invalid service name'
         }
 
+        // Note: Could check if its real coordinates
         if (lat === null || lat === '' || typeof lat !== 'string') {
-            throw new Error('Invalid latitude')
+            throw 'Invalid latitude'
         }
-
         if (lng === null || lng === '' || typeof lng !== 'string') {
             throw 'Invalid longtitude'
         }
 
-        // Note: This could be optimised to one loop by using .forEach or similar but for readability I kept this chainable with .filter and .map
+        // Note 1: This could be optimised to one loop by using .forEach or similar but for readability I kept this chainable with .filter and .map
+        // Note 2: There could also be optimisations by limiting the results for the user
         const results = this.data
             // First filter results that are not relevant
             .filter(result => {

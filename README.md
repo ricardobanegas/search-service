@@ -14,10 +14,10 @@ Simple HTTP search service that returns a list of services based on the given qu
 `curl localhost:9000/search?service=<SERVICE_NAME>&lat=<LAT>&lng=<LNG>`
 
 ### Example
-`curl localhost:9000/search?service=massage&lat=59.313357&lng=18.022400`
+`curl 'http://localhost:9000/search?service=massage&lat=59.313357&lng=18.022400'`
 
-### Run mocha tests
-`npm run tests`
+### Run cypress tests - make sure server is already running
+`npm test`
 
 ## Tested on
 
