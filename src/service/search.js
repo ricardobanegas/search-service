@@ -33,7 +33,7 @@ class searchService {
         }
 
         if (lat === null || lat === '' || typeof lat !== 'string') {
-            throw 'Invalid latitude'
+            throw new Error('Invalid latitude')
         }
 
         if (lng === null || lng === '' || typeof lng !== 'string') {

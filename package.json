@@ -5,11 +5,12 @@
   "main": "src/server.js",
   "scripts": {
     "server": "node src/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "cypress run"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "cypress": "^4.3.0",
     "express": "^4.17.1"
   },
   "dependencies": {

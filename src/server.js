@@ -9,7 +9,7 @@ const rawdata = fs.readFileSync('./db/data.json')
 const data = JSON.parse(rawdata)
 const search = new searchService(data)
 
-// Configuration (in a larger app - separate to standalone config-file)
+// Configuration
 const config = {
     PORT: 9000
 }
