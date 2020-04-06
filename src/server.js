@@ -2,6 +2,14 @@
 const express = require('express')
 const app = express()
 
+// Services
+const searchService = require('./service/search')
+
+// Instanciate and results data into memory
+const search = new searchService({
+    mama: 'mama'
+ })
+
 // Configuration (in a larger app - separate to standalone config-file)
 const config = {
     PORT: 9000
@@ -11,13 +19,15 @@ const config = {
 // XXX
 
 // Routes
-app.get('/search', function (req, res) {
-    res.send('hello world')
+app.get('/search', (req, res) => {
+    res.json(search.find())
 })
 
-// Catch-all - in production this should include error states like 404, 500
-app.get('*', function (req, res) {
-    res.send('*')
+app.get('*', (req, res) => {
+    // Catch-all - in production this should include error states like 404, 500
+    res.json({
+        "error": 'No such URL'
+    })
 })
 
 // Start server
